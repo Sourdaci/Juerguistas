@@ -33,7 +33,7 @@ public class Bebedor
         if(alcoholActual > 0 && alcoholActual < alcoholMaximo){
             this.alcoholActual = alcoholActual;
         }else{
-            this.alcoholActual = ((alcoholActual * 8) / 10);
+            this.alcoholActual = ((this.alcoholMaximo * 8) / 10);
         }
         this.nombre = nombre;
     }

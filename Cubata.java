@@ -46,4 +46,11 @@ public class Cubata
     public int getAlcohol(){
         return alcohol;
     }
+    
+    /**
+     * Devuelve el nombre del Cubata
+     */
+    public String getNombreCopa(){
+        return nombreCopa;
+    }
 }
