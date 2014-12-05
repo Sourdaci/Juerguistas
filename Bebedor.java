@@ -57,7 +57,7 @@ public class Bebedor
     public String preguntaAlCliente(String pregunta){
         String respuesta = "Si";
         if(!quieroMas() || pregunta.contains(nombre)){
-            respuesta = "¡" + pregunta + "!";
+            respuesta = pregunta + "!!!!!!";
         }else if((pregunta.length() % 2) != 0){
             respuesta = "No";
         }
