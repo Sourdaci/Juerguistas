@@ -42,7 +42,7 @@ public class Bebedor
      * Ofrece al borrachuzo otra copa, y responde en consecuencia
      */
     public String otraCopita(Cubata copazo){
-        String respuesta = "Si, tio!";
+        String respuesta = "Si, tio! Un " + copazo.getNombreCopa() + " p'al body!";
         if(quieroMas()){
             alcoholActual += copazo.getAlcohol();
         }else{

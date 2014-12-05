@@ -28,12 +28,15 @@ public class Cubata
      */
     public Cubata(int alcohol)
     {
-        if(alcohol > 0 && alcohol < 100){
+        if(alcohol > 0 && alcohol < 90){
             this.alcohol = alcohol;
             nombreCopa = "Cubata Personalizado";
+		}else if(alcohol >= 90 && alcohol < 100){
+			this.alcohol = alcohol;
+			nombreCopa = "Matarratas";
         }else if(alcohol == 100){
             this.alcohol = 100;
-            nombreCopa = "Veneno puro";
+            nombreCopa = "Veneno Puro";
         }else{
             this.alcohol = 0;
             nombreCopa = "Cubata Virgen";
