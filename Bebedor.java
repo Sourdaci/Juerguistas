@@ -99,6 +99,15 @@ public class Bebedor
     }
     
     /**
+     * El bebedor queda inconsciente si su alcohol actual es el 120% de su maximo
+     */
+    private void desmayo(){
+        if(alcoholActual > (alcoholMaximo * 1.2)){
+            consciente = false;
+        }
+    }
+    
+    /**
      * El bebedor recupera la consciencia si su alcohol actual es menor a su alcohol maximo
      */
     private void recupera(){
