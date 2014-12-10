@@ -97,4 +97,13 @@ public class Bebedor
             alcoholActual = 0;
         }
     }
+    
+    /**
+     * El bebedor recupera la consciencia si su alcohol actual es menor a su alcohol maximo
+     */
+    private void recupera(){
+        if(alcoholActual < alcoholMaximo){
+            consciente = true;
+        }
+    }
 }
