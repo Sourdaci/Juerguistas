@@ -11,7 +11,8 @@ public class Bebedor
     private int alcoholMaximo, alcoholActual;
     // Nombre de la persona
     private String nombre;
-    
+    // Indica si el bebedor esta consciente o no
+    private Boolean consciente = true;
 
     /**
      * Un nuevo borrachuzo entra en nuestro garito de mala muerte
@@ -42,9 +43,12 @@ public class Bebedor
      * Ofrece al borrachuzo otra copa, y responde en consecuencia
      */
     public String otraCopita(Cubata copazo){
-        String respuesta = "Si, tio! Un " + copazo.getNombreCopa() + " p'al body!";
-        if(quieroMas()){
+        String respuesta;
+        if(!consciente){
+            respuesta = nombre +" esta inconsciente";
+        }else if(quieroMas()){
             alcoholActual += copazo.getAlcohol();
+            respuesta = "Si, tio! Un " + copazo.getNombreCopa() + " p'al body!";
         }else{
             respuesta = "No, tronco, ya esshtoy borrrassho...";
         }
@@ -55,11 +59,15 @@ public class Bebedor
      * Pregunta cosas al borrachuzo y responde dependiendo de su estado y la pregunta
      */
     public String preguntaAlCliente(String pregunta){
-        String respuesta = "Si";
-        if(!quieroMas() || pregunta.contains(nombre)){
+        String respuesta;
+        if(!consciente){
+            respuesta = nombre +" esta inconsciente";
+        }else if(!quieroMas() || pregunta.contains(nombre)){
             respuesta = pregunta + "!!!!!!";
         }else if((pregunta.length() % 2) != 0){
             respuesta = "No";
+        }else{
+            respuesta = "Si";
         }
         return respuesta;
     }
