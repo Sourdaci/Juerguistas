@@ -74,4 +74,19 @@ public class Bebedor
         }
         return otraMas;
     }
+    
+    
+    /**
+     * Deja pasar el tiempo las horas introducidas
+     * Cada hora reduce un 10% de su límite el alcohol que existe actualmente en su organismo
+     * Recuerda: el alcohol minimo existente en el organismo es 0, nunca sera negativo
+     */
+    public void pasarCogorza(int horas){
+        if(horas > 0){
+            alcoholActual -= ((alcoholMaximo * horas) / 10);
+        }
+        if(alcoholActual < 0){
+            alcoholActual = 0;
+        }
+    }
 }
