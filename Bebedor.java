@@ -49,6 +49,7 @@ public class Bebedor
         }else if(quieroMas()){
             alcoholActual += copazo.getAlcohol();
             respuesta = "Si, tio! Un " + copazo.getNombreCopa() + " p'al body!";
+            desmayo();
         }else{
             respuesta = "No, tronco, ya esshtoy borrrassho...";
         }
@@ -96,22 +97,23 @@ public class Bebedor
         if(alcoholActual < 0){
             alcoholActual = 0;
         }
+        recupera();
     }
     
     /**
-     * El bebedor queda inconsciente si su alcohol actual es el 120% de su maximo
+     * El bebedor queda inconsciente si su alcohol actual es el 160% de su maximo
      */
     private void desmayo(){
-        if(alcoholActual > (alcoholMaximo * 1.2)){
+        if(alcoholActual > (alcoholMaximo * 1.6)){
             consciente = false;
         }
     }
     
     /**
-     * El bebedor recupera la consciencia si su alcohol actual es menor a su alcohol maximo
+     * El bebedor recupera la consciencia si su alcohol actual es menor al 90% su alcohol maximo
      */
     private void recupera(){
-        if(alcoholActual < alcoholMaximo){
+        if(alcoholActual < (alcoholMaximo * 0.9)){
             consciente = true;
         }
     }
