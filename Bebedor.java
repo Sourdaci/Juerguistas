@@ -40,6 +40,14 @@ public class Bebedor
     }
     
     /**
+     * Devuelve el nombre del Bebedor
+     * Para futuros y ludicos usos
+     */
+    public String getNombre(){
+        return nombre;
+    }
+    
+    /**
      * Ofrece al borrachuzo otra copa, y responde en consecuencia
      */
     public String otraCopita(Cubata copazo){
