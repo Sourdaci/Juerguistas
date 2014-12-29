@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 /**
  * Tablero para jugar a la Oca. Version de 1 dado.
+ * Fuentes de informacion: Wikipedia, tablero de Heraclio Fournier
  */
 public class Oca{
     // Numero de casillas del tablero. Por hacerlo bonito.
@@ -76,40 +77,55 @@ public class Oca{
                                 int elDadoDice = dadito.getTirada(); //Guardamos la tirada para mostrarla luego
                                 ficha[i] += elDadoDice; // Suma la tirada del dado a la posicion de la ficha
                                 switch (ficha[i]){ // Operacion a realizar segun la casilla donde caiga la ficha
-                                    // Hay 12 + 1 casillas de Oca, tirada extra
+                                    // Hay 12 + 1 casillas de Oca, avanza a la siguiente oca y tirada extra
                                     case 5:
-                                    case 9:
                                     case 14:
-                                    case 18:
                                     case 23:
-                                    case 27:
                                     case 32:
-                                    case 36:
                                     case 41:
-                                    case 45:
                                     case 50:
+                                        ficha[i] += 4;
+                                        System.out.print("Oca (" + elDadoDice + "), avanza a la " + ficha[i] + "! ");
+                                        otraTirada = true;
+                                        break;
+                                    case 9:
+                                    case 18:
+                                    case 27:
+                                    case 36:
+                                    case 45:
                                     case 54:
+                                        ficha[i] += 5;
+                                        System.out.print("Oca (" + elDadoDice + "), avanza a la " + ficha[i] + "! ");
+                                        otraTirada = true;
+                                        break;
                                     case 59:
-                                        System.out.print("Oca (" + elDadoDice + ")! ");
-                                        otraTirada = true;
+                                        // La Oca de la casilla 59 te lleva a la casilla final... y a la victoria
+                                        ficha[i] = casillas;
+                                        System.out.println("Oca (" + elDadoDice + "), " + jugadores.get(i).getNombre() + "avanza a la " + ficha[i] + "!");
+                                        otraTirada = false;
                                         break;
-                                    // Hay 2 casillas de Dado, tirada extra
+                                    // Hay 2 casillas de Dado, movimiento a la otra casilla de dado y tirada extra
                                     case 26:
-                                    case 53:
-                                        System.out.print("Dados (" + elDadoDice + ")! ");
+                                        ficha[i] = 53;
+                                        System.out.print("Dados (" + elDadoDice + "), a la 53! ");
                                         otraTirada = true;
                                         break;
-                                    // El puente de avanzar
+                                    case 53:
+                                        ficha[i] = 26;
+                                        System.out.print("Dados (" + elDadoDice + "), a la 26! ");
+                                        otraTirada = true;
+                                        break;
+                                    // Hay 2 casillas de Puente, movimiento a la otra casilla de Puente y tirada extra
                                     case 6:
                                         ficha[i] = 12;
-                                        System.out.println(jugadores.get(i).getNombre() + " (" + elDadoDice + ") va de puente 6 a puente 12");
-                                        otraTirada = false;
+                                        System.out.print("Puente (" + elDadoDice + "), a la 12! ");
+                                        otraTirada = true;
                                         break;
                                     // El puente de retroceder
                                     case 12:
                                         ficha[i] = 6;
-                                        System.out.println(jugadores.get(i).getNombre() + " (" + elDadoDice + ") va de puente 12 a puente 6");
-                                        otraTirada = false;
+                                        System.out.print("Puente (" + elDadoDice + "), a la 6! ");
+                                        otraTirada = true;
                                         break;
                                     // La posada, 2 turnos
                                     case 19:
@@ -132,7 +148,7 @@ public class Oca{
                                     // La carcel, 3 turnos
                                     case 52:
                                         restantes[i] = 3;
-                                        System.out.println(jugadores.get(i).getNombre() + " (" + elDadoDice + ") esta encarcelado!!!");
+                                        System.out.println(jugadores.get(i).getNombre() + " (" + elDadoDice + ") esta en la carcel!!!");
                                         otraTirada = false;
                                         break;
                                     // La muerte, volver a la casilla 1
@@ -146,7 +162,9 @@ public class Oca{
                                             // Retrocede las casillas que te pases
                                             ficha[i] = casillas - (ficha[i] - casillas);
                                         }
-                                        System.out.println(jugadores.get(i).getNombre() + " se mueve (" + elDadoDice + ") a la casilla " + ficha[i]);
+                                        if(ficha[i] != 1){
+                                            System.out.println(jugadores.get(i).getNombre() + " se mueve (" + elDadoDice + ") a la casilla " + ficha[i]);
+                                        }
                                         otraTirada = false;
                                         break;
                                 }
