@@ -158,15 +158,14 @@ public class Oca{
                                         ficha[i] = 1;
                                         System.out.println(jugadores.get(i).getNombre() + " (" + elDadoDice + ") visita a la parca y vuelve a empezar");
                                         otraTirada = false;
+                                        break;
                                     // Las casillas que no tienen evento
                                     default:
                                         if(ficha[i] > casillas){ // Si la tirada te lleva mas alla de la ultima casilla
                                             // Retrocede las casillas que te pases
                                             ficha[i] = casillas - (ficha[i] - casillas);
                                         }
-                                        if(ficha[i] != 1){ // Por si una ficha ha vuelto a la salida por muerte, evita informacion redundante
-                                            System.out.println(jugadores.get(i).getNombre() + " se mueve (" + elDadoDice + ") a la casilla " + ficha[i]);
-                                        }
+                                        System.out.println(jugadores.get(i).getNombre() + " se mueve (" + elDadoDice + ") a la casilla " + ficha[i]);
                                         otraTirada = false;
                                         break;
                                 }
